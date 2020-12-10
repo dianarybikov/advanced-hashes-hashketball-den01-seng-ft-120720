@@ -150,7 +150,7 @@ end
 
 def team_colors(team)
   game_hash.each do |team_position , team_data|
-    if team == team_data[:team_name]
+    if team_data[:team_name] == team
       return team_data[:colors]
     end
   end
@@ -187,7 +187,7 @@ def player_stats(name)
     team_data.each do |key, value|
       if key == :players
         value.each do |player|
-          if name == player[:player_name]
+           if name == player[:player_name]
             return player
            # binding.pry 
           end
@@ -199,15 +199,16 @@ end
 
 
 def big_shoe_rebounds
-big_shoe = 0 
-rebounds = 0 
+shoe_size = 0 
+rebounds = "" 
 game_hash.each do |team, team_info|
   team_info[:players].each do |player|
-    if player[:shoe] > big_shoe
-      big_shoe = player[:shoe]
+    if player[:shoe] > shoe_size
+      shoe_size = player[:shoe]
       rebounds = player[:rebounds]
     end
   end
 end
 return rebounds
 end
+
